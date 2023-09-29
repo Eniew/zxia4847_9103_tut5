@@ -11,6 +11,6 @@ I want to apply this technique to my digital art design because it allows me to 
 Part2\
 As for the coding technique, I can utilize programming languages such as JavaScript or Python along with image processing libraries like Pillow (Python) or the Canvas API (JavaScript) to automate and customize the creation of double exposure effects. \
 And here are some links I can learn.\
-https://github.com/smasuch/DoubledExposure/blob/master/doubledexposure.py
-https://github.com/tscotn/double-exposure/blob/master/double_exposure.py
-https://github.com/akanetr/Double_Exposure/tree/master/js
+https://github.com/smasuch/DoubledExposure/blob/master/doubledexposure.py\
+https://github.com/tscotn/double-exposure/blob/master/double_exposure.py\
+https://github.com/akanetr/Double_Exposure/tree/master/js\
