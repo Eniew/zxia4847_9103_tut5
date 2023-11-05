@@ -9,16 +9,17 @@ let mountainHeights = [];
 let c1, c2;
 var a = 0.0, x, y, n, step = 3;
 var mic;
-var fft;
+var fft; // FFT分析对象
+var isPlaying = false;// 音乐播放状态
 
 function preload() {
-    song = loadSound("Assets/night.mp3");
+  song = loadSound("Assets/night.mp3");
 }
+
 function setup() {
 createCanvas(900, 630);
 background(23, 108, 177);
 fft = new p5.FFT(0.5, 512);
-
 
 mic = new p5.AudioIn();
 mic.start();
@@ -33,18 +34,32 @@ B[i] = 0;
 }
 init();
 noStroke();
-song.play()
+song.play();
+
 }
 
+function toggleMusic() {
+    if (isPlaying) {
+        song.pause(); // 暂停音乐
+    } else {
+        song.play(); // 播放音乐
+    }
+    isPlaying = !isPlaying; // 切换音乐播放状态
+}
+
+
 function draw() {
+
 river();
 shade();
 mountain();
 deepMountain();
 castle();
 cloud();
-
 }
+
+
+
 
 function cloud(){
 
@@ -80,6 +95,8 @@ quad(110,130,120,140,120,160,110,160);
 rect(120,80,40,80);
 triangle(140,20,160,80,120,80);
 }
+
+
 
 function river(){
   
@@ -215,7 +232,7 @@ pop();
 function deepMountain() {
 push();
 var vol = mic.getLevel();
-let rand = vol *20
+let rand = vol *40
 stroke(92,61,43,random(100, 150)/3);
 strokeWeight(10);
 for (let x = width; x > 0; x--) {
@@ -223,6 +240,8 @@ line(width/ 2 - x, height / 2 , width/3 - x, height / 2 - (mountainHeights[x] * 
 }
 pop();
 }
+
+
 
 
 function shade() {
@@ -237,3 +256,12 @@ line(180 - s, t+height/2, 100 + s, t+height/2);
 pop();
 }
 
+function mousePressed() {
+    // 当点击画面任意区域时，切换音乐播放状态
+    if (!isPlaying) {
+        song.play();
+    } else {
+        song.pause();
+    }
+    isPlaying = !isPlaying;
+}
