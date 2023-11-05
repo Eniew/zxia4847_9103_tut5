@@ -9,11 +9,17 @@ let mountainHeights = [];
 let c1, c2;
 var a = 0.0, x, y, n, step = 3;
 var mic;
+var fft;
 
-
+function preload() {
+    song = loadSound("Assets/night.mp3");
+}
 function setup() {
 createCanvas(900, 630);
 background(23, 108, 177);
+fft = new p5.FFT(0.5, 512);
+
+
 mic = new p5.AudioIn();
 mic.start();
 
@@ -27,6 +33,7 @@ B[i] = 0;
 }
 init();
 noStroke();
+song.play()
 }
 
 function draw() {
@@ -191,8 +198,6 @@ mountainHeights[x] = n * 100;
 c1 = color(0);
 c2 = color(0, 102, int(random(100, 255)));
 }
-
-
 
 
 function mountain() {
